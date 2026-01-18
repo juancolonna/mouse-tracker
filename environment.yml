@@ -1,0 +1,15 @@
+name: mouse-tracker
+channels:
+  - conda-forge
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.13
+  - pip
+  - pip:
+      - ultralytics==8.4.5
+      - moviepy==2.2.1
+      - opencv-python==4.12.0.88
+      - numpy==2.1.3
+      - tqdm==4.67.1
+      - -e . 

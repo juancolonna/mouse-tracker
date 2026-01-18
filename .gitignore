@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+.venv/
+
+# Build e Distribuição
+dist/
+build/
+*.egg-info/
+
+# YOLO / Ultralytics
+runs/
+*.pt
+
+# Arquivos de Vídeo e Dados (Evita subir vídeos pesados)
+*.mp4
+*.avi
+*.mov
+*.csv
+
+# Conda
+.conda/
