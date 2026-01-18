@@ -14,9 +14,11 @@ dist/
 build/
 *.egg-info/
 
-# YOLO / Ultralytics
-runs/
+# Ignora todos os arquivos .pt
 *.pt
+
+# EXCETO os que estiverem na pasta weights do pacote
+!src/mouse_tracker/weights/*.pt
 
 # Arquivos de Vídeo e Dados (Evita subir vídeos pesados)
 *.mp4
