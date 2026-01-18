@@ -6,6 +6,9 @@ and uses YOLO to track objects while generating a trajectory (trail) and a CSV l
 Install dependencies using:
 conda env create -f environment.yml
 conda activate mouse-tracker
+
+How to run:
+$ mouse-track your_video.mp4
 """
 
 from moviepy.video.io.VideoFileClip import VideoFileClip
