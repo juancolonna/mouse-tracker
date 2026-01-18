@@ -154,7 +154,7 @@ def yolo_track(cropped_video_filename):
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python script_name.py <video_path>")
+        print("Usage: mouse-track <mp4_video_path>")
         sys.exit(1)
 
     video_path = sys.argv[1]
