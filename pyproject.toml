@@ -38,3 +38,6 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.package-data]
 mouse_tracker = ["weights/*.pt"]
+
+[tool.setuptools.exclude-package-data]
+mouse_tracker = ["*.zip", "dataset.zip"] # EXCLUI o dataset do pacote pip
