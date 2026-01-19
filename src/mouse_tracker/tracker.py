@@ -197,6 +197,10 @@ def main():
     response = input("\nProceed with tracking? (y/n): ").lower()
     if response == 'y':
         yolo_track(cropped_video_filename)
+        # Delete the temporary file after tracking
+        print(f"\nCleaning up temporary files...")
+        Path(cropped_video_filename).unlink(missing_ok=True)
+        print(f"Temporary file {cropped_video_filename} removed.")
     else:
         sys.exit(0)
 
