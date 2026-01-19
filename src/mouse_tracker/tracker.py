@@ -61,6 +61,16 @@ def crop_video_borders(video_path, center_of_coordinates, h, w):
 
 def yolo_track(cropped_video_filename):
     """Runs YOLO tracking, draws trajectory trails, and logs data to CSV."""
+
+    # 1. Prepare the clean filenames
+    p = Path(cropped_video_filename)
+    # Remove "_cropped" from the stem (filename without extension)
+    base_name = p.stem.replace("_cropped", "")
+    
+    # Final names: segment_1_tracked.mp4 and segment_1_log.csv
+    out_path = str(p.with_name(f"{base_name}_tracked{p.suffix}"))
+    log_filename = str(p.with_name(f"{base_name}_log.csv"))
+
     # Load your custom model
     model = YOLO(str(DEFAULT_MODEL_PATH))
 
@@ -90,11 +100,9 @@ def yolo_track(cropped_video_filename):
 
     # Configure VideoWriter for the annotated output
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    out_path = f"{cropped_video_filename[:-4]}_tracked.mp4"
     out = cv2.VideoWriter(out_path, fourcc, fps, (width, height))
     
     # Prepare CSV log file
-    log_filename = f"{cropped_video_filename[:-4]}_log.csv"
     with open(log_filename, mode='w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(["Frame", "Track_ID", "Class", "Time (s)", "Confidence", "pos_x", "pos_y", "center_x", "center_y"])
@@ -198,9 +206,8 @@ def main():
     if response == 'y':
         yolo_track(cropped_video_filename)
         # Delete the temporary file after tracking
-        print(f"\nCleaning up temporary files...")
+        print(f"\nCleaning up temporary file: {cropped_video_filename}")
         Path(cropped_video_filename).unlink(missing_ok=True)
-        print(f"Temporary file {cropped_video_filename} removed.")
     else:
         sys.exit(0)
 

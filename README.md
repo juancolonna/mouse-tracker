@@ -30,7 +30,7 @@ gh repo clone juancolonna/mouse-tracker
 cd mouse-tracker
 conda env create -f environment.yml
 conda activate mouse-tracker
-pip install mouse-tracker
+pip install mus-musculus-tracker
 ```
 
 ## 🛠 Usage
